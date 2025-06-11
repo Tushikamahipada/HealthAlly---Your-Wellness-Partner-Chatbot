@@ -28,7 +28,6 @@
 
 ## Tech Stack
 
-|--------------------------------|
 | Layer     | Technology         |
 |-----------|--------------------|
 | Frontend  | HTML, Tailwind CSS, JavaScript |
