@@ -1,0 +1,269 @@
+[
+  {
+    "disease": "Common Cold",
+    "symptoms": [
+      "runny nose",
+      "sore throat",
+      "cough",
+      "sneezing",
+      "mild headache",
+      "congestion"
+    ],
+    "food_to_take": [
+      "warm soup",
+      "ginger tea",
+      "citrus fruits",
+      "honey",
+      "hot water"
+    ],
+    "food_to_avoid": [
+      "cold drinks",
+      "fried food",
+      "ice cream",
+      "sugar-rich foods"
+    ],
+    "medicines": [
+      "Cetirizine",
+      "Paracetamol",
+      "Steam inhalation"
+    ]
+  },
+  {
+    "disease": "Fever",
+    "symptoms": [
+      "high temperature",
+      "chills",
+      "body ache",
+      "sweating",
+      "fatigue"
+    ],
+    "food_to_take": [
+      "boiled vegetables",
+      "porridge",
+      "fruit juices",
+      "coconut water",
+      "soups"
+    ],
+    "food_to_avoid": [
+      "heavy meals",
+      "spicy food",
+      "fried items",
+      "sugar-rich foods"
+    ],
+    "medicines": [
+      "Paracetamol",
+      "Dolo 650"
+    ]
+  },
+  {
+    "disease": "Dengue",
+    "symptoms": [
+      "high fever",
+      "severe headache",
+      "pain behind eyes",
+      "joint pain",
+      "rashes",
+      "bleeding gums"
+    ],
+    "food_to_take": [
+      "papaya leaf juice",
+      "pomegranate",
+      "coconut water",
+      "fluids"
+    ],
+    "food_to_avoid": [
+      "oily foods",
+      "spicy items",
+      "caffeine",
+      "processed foods"
+    ],
+    "medicines": [
+      "Paracetamol",
+      "ORS (Oral Rehydration Solution)"
+    ]
+  },
+  {
+    "disease": "Typhoid",
+    "symptoms": [
+      "prolonged fever",
+      "abdominal pain",
+      "constipation",
+      "weakness",
+      "loss of appetite"
+    ],
+    "food_to_take": [
+      "soft bland diet",
+      "banana",
+      "boiled potatoes",
+      "rice",
+      "apple sauce"
+    ],
+    "food_to_avoid": [
+      "raw vegetables",
+      "fried food",
+      "spicy items"
+    ],
+    "medicines": [
+      "Ciprofloxacin",
+      "Azithromycin"
+    ]
+  },
+  {
+    "disease": "Malaria",
+    "symptoms": [
+      "fever",
+      "chills",
+      "sweating",
+      "nausea",
+      "vomiting",
+      "muscle pain"
+    ],
+    "food_to_take": [
+      "hydrating fluids",
+      "boiled vegetables",
+      "rice",
+      "apple",
+      "banana"
+    ],
+    "food_to_avoid": [
+      "alcohol",
+      "fried foods",
+      "junk food"
+    ],
+    "medicines": [
+      "Artemether-Lumefantrine",
+      "Chloroquine"
+    ]
+  },
+  {
+    "disease": "Acidity",
+    "symptoms": [
+      "burning sensation in chest",
+      "sour taste",
+      "bloating",
+      "burping"
+    ],
+    "food_to_take": [
+      "cold milk",
+      "banana",
+      "coconut water",
+      "oats",
+      "ginger"
+    ],
+    "food_to_avoid": [
+      "tea",
+      "coffee",
+      "chocolate",
+      "spicy food",
+      "alcohol"
+    ],
+    "medicines": [
+      "Pantoprazole",
+      "Ranitidine",
+      "Antacids"
+    ]
+  },
+  {
+    "disease": "Diabetes",
+    "symptoms": [
+      "frequent urination",
+      "excessive thirst",
+      "unexplained weight loss",
+      "fatigue",
+      "blurred vision"
+    ],
+    "food_to_take": [
+      "leafy greens",
+      "whole grains",
+      "nuts",
+      "low-GI fruits"
+    ],
+    "food_to_avoid": [
+      "white rice",
+      "sugary drinks",
+      "white bread",
+      "sweets"
+    ],
+    "medicines": [
+      "Metformin",
+      "Insulin (if prescribed)"
+    ]
+  },
+  {
+    "disease": "Hypertension",
+    "symptoms": [
+      "headache",
+      "shortness of breath",
+      "nosebleeds",
+      "dizziness",
+      "chest pain"
+    ],
+    "food_to_take": [
+      "low-sodium food",
+      "leafy greens",
+      "berries",
+      "oatmeal",
+      "banana"
+    ],
+    "food_to_avoid": [
+      "salt",
+      "processed foods",
+      "pickles",
+      "alcohol"
+    ],
+    "medicines": [
+      "Amlodipine",
+      "Losartan"
+    ]
+  },
+  {
+    "disease": "Asthma",
+    "symptoms": [
+      "shortness of breath",
+      "wheezing",
+      "chest tightness",
+      "coughing"
+    ],
+    "food_to_take": [
+      "apple",
+      "banana",
+      "ginger",
+      "carrots"
+    ],
+    "food_to_avoid": [
+      "cold drinks",
+      "dairy",
+      "fried food",
+      "preservatives"
+    ],
+    "medicines": [
+      "Salbutamol inhaler",
+      "Montelukast"
+    ]
+  },
+  {
+    "disease": "Migraine",
+    "symptoms": [
+      "severe headache",
+      "nausea",
+      "sensitivity to light",
+      "blurred vision",
+      "vomiting"
+    ],
+    "food_to_take": [
+      "whole grains",
+      "leafy greens",
+      "magnesium-rich foods"
+    ],
+    "food_to_avoid": [
+      "chocolate",
+      "cheese",
+      "alcohol",
+      "caffeine"
+    ],
+    "medicines": [
+      "Sumatriptan",
+      "Naproxen"
+    ]
+  }
+]
