@@ -1,0 +1,190 @@
+
+<!-- Updated index2.html -->
+<!DOCTYPE html>
+<html lang="en" class="transition-colors duration-300">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🩺 HealthAlly - Your Healthcare Chatbot</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    .fade-in { animation: fadeIn 1s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100vw;
+      min-height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.3;
+    }
+
+  </style>
+</head>
+<body class="bg-blue-50 dark:bg-gray-900 dark:text-white flex flex-col items-center min-h-screen p-4 transition-colors duration-300">
+
+  <!-- Background video -->
+  <video autoplay muted loop id="bg-video">
+    <source src="{{ url_for('static', filename='background.mp4') }}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+
+  <!-- Dark mode toggle -->
+  <div class="w-full max-w-2xl flex justify-between items-center">
+    <button id="dark-toggle" class="text-sm px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full shadow hover:bg-gray-300 dark:hover:bg-gray-600 transition">
+      🌙 Toggle Dark Mode
+    </button>
+    <button id="sound-toggle" class="text-sm px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full shadow hover:bg-gray-300 dark:hover:bg-gray-600 transition">
+      🔊 Voice: ON
+    </button>
+  </div>
+
+  <!-- Logo and title -->
+  <div class="text-center my-4">
+    <img id="logo" src="{{ url_for('static', filename='logo.png') }}" alt="HealthAlly Logo" 
+         class="mx-auto w-32 h-auto mb-3 opacity-0 scale-75 transition-all duration-700">
+    <h1 class="text-4xl font-bold text-blue-700 dark:text-white">HealthAlly</h1>
+    <p class="text-lg font-bold text-gray-600 dark:text-gray-300 mt-1">Your Wellness Partner</p>
+  </div>
+
+  <!-- Chat container -->
+<div id="chat-container" class="bg-transparent dark:bg-black/40 rounded-xl p-6 w-full max-w-2xl flex flex-col h-[70vh] overflow-y-auto fade-in border border-white/10 backdrop-blur-md">
+    <div class="bot-msg">Hi there! I’m HealthAlly 👩‍⚕️. Are you feeling unwell today? (Y/N)</div>
+  </div>
+
+  <!-- Input form -->
+  <form id="chat-form" class="w-full max-w-2xl mt-4 flex gap-2" onsubmit="sendMessage(event)">
+    <input id="user-input" type="text" placeholder="Describe your symptoms, like 'headache' or 'fever'..." 
+           class="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-gray-700 dark:text-white dark:border-gray-600" required>
+    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700">Send</button>
+  </form>
+
+  <script>
+  const form = document.getElementById("chat-form");
+  const input = document.getElementById("user-input");
+  const chatContainer = document.getElementById("chat-container");
+  const darkToggle = document.getElementById("dark-toggle");
+  const soundToggle = document.getElementById("sound-toggle");
+  let voiceEnabled = true;
+
+  function enrichText(text) {
+    let enriched = text
+      .replace(/doctor/gi, " doctor")
+      .replace(/medication|medicine|tablet/gi, " medication")
+      .replace(/analgesics/gi, " Analgesics")
+      .replace(/treatment scans/gi, " Treatment Scans")
+      .replace(/diet/gi, " Diet");
+
+    if (text.includes("contactnumber") && text.includes("Specialist")) {
+      return parseDoctorCard(text) || enriched;
+    }
+    return enriched;
+  }
+
+  function parseDoctorCard(raw) {
+    try {
+      const lines = raw.split(',');
+      const name = lines.find(l => l.toLowerCase().includes("name")).split(":")[1];
+      const phone = lines.find(l => l.toLowerCase().includes("contactnumber")).split(":")[1];
+      const location = lines.find(l => l.toLowerCase().includes("location")).split(":")[1];
+      const timings = lines.find(l => l.toLowerCase().includes("timings")).split(":")[1];
+      const specialist = lines.find(l => l.toLowerCase().includes("specialist")).split(":")[1];
+
+      return `
+        <div class="p-4 border border-blue-300 dark:border-gray-500 bg-blue-100 dark:bg-gray-700 rounded-lg mt-2 text-sm">
+          <div><strong> name: ${name.trim()}</strong></div>
+          <div> Location: ${location.trim()}</div>
+          <div>Timings: ${timings.trim()}</div>
+          <div> Contact: ${contactnumber.trim()}</div>
+          <div> Hospital: ${hospital.trim()}</div>
+        </div>
+      `;
+    } catch {
+      return null;
+    }
+  }
+
+  function addMessage(message, sender = "bot") {
+    const msg = document.createElement("div");
+    msg.className = sender === "bot" ? "bot-msg self-start fade-in" : "user-msg self-end fade-in";
+    msg.innerHTML = enrichText(message);
+    chatContainer.appendChild(msg);
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+
+    if (sender === "bot" && voiceEnabled && window.speechSynthesis) {
+      const utter = new SpeechSynthesisUtterance(message);
+      utter.rate = 1;
+      utter.pitch = 0.8;
+      utter.voice = window.speechSynthesis.getVoices().find(v => v.lang.includes("en")) || null;
+      window.speechSynthesis.speak(utter);
+    }
+  }
+
+  function addTypingIndicator() {
+    const indicator = document.createElement("div");
+    indicator.className = "bot-msg typing-indicator flex fade-in";
+    indicator.innerHTML = `<div class="typing"><div></div><div></div><div></div></div>`;
+    chatContainer.appendChild(indicator);
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+    return indicator;
+  }
+
+  async function sendMessage(e) {
+    e.preventDefault();
+    const userText = input.value.trim();
+    if (!userText) return;
+
+    addMessage(userText, "user");
+    input.value = "";
+
+    const typing = addTypingIndicator();
+
+    const response = await fetch("/entry", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userText)
+    });
+
+    const data = await response.json();
+    typing.remove();
+    addMessage(data.name, "bot");
+  }
+
+  // 🌙 Dark mode toggle with label update
+  darkToggle.addEventListener("click", () => {
+    const isDark = document.documentElement.classList.toggle("dark");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+    darkToggle.textContent = isDark ? "🌙 Dark Mode: ON" : "🌞 Dark Mode: OFF";
+  });
+
+  // 🔊 Voice toggle
+  soundToggle.addEventListener("click", () => {
+    voiceEnabled = !voiceEnabled;
+    soundToggle.textContent = voiceEnabled ? "🔊 Voice: ON" : "🔇 Voice: OFF";
+  });
+
+  // 🕒 On load: Apply theme & update button text
+  if (localStorage.getItem("theme") === "dark") {
+    document.documentElement.classList.add("dark");
+    darkToggle.textContent = "🌙 Dark Mode: ON";
+  } else {
+    darkToggle.textContent = "🌞 Dark Mode: OFF";
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const logo = document.getElementById("logo");
+    setTimeout(() => {
+      logo.classList.remove("opacity-0", "scale-75");
+      logo.classList.add("opacity-100", "scale-100");
+    }, 100);
+  });
+</script>
+
+</body>
+</html>
