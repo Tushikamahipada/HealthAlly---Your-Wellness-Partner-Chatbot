@@ -69,6 +69,19 @@ Visit http://127.0.0.1:5000/
 
 ---
 
+## 🖥️ Screenshots
+
+### 💡 Disease Prediction Based on Symptoms
+![Disease prediction](Images/disease prediction.png)
+
+### 📍 Doctor Suggestion Based on Pincode
+![Doctor suggestion](Images/pincode based doctor suggestion.png)
+
+### 🌙 Dark Mode View
+![Dark mode](assets/dark mode.png)
+
+---
+
 ## 📌 Future Enhancements
 
 1. User login for history tracking
