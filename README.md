@@ -72,13 +72,13 @@ Visit http://127.0.0.1:5000/
 ## 🖥️ Screenshots
 
 ### 💡 Disease Prediction Based on Symptoms
-![Disease prediction](Images/disease prediction.png)
+![Disease prediction](https://github.com/Tushikamahipada/HealthAlly---Your-Wellness-Partner-Chatbot/blob/main/Images/disease%20prediction.png)
 
 ### 📍 Doctor Suggestion Based on Pincode
-![Doctor suggestion](Images/pincode based doctor suggestion.png)
+![Doctor suggestion](https://github.com/Tushikamahipada/HealthAlly---Your-Wellness-Partner-Chatbot/blob/main/Images/pincode%20based%20doctor%20suggestion.png)
 
 ### 🌙 Dark Mode View
-![Dark mode](assets/dark mode.png)
+![Dark mode](https://github.com/Tushikamahipada/HealthAlly---Your-Wellness-Partner-Chatbot/blob/main/Images/dark%20mode.png)
 
 ---
 
